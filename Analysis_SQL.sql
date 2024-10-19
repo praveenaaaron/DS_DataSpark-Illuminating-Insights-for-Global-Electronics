@@ -55,3 +55,12 @@ from SALES_DETAILS s;
 -- 5.count of stores in country wise
 select Country,count(StoreKey) from STORE_DETAILS
 group by Country order by count(StoreKey) desc;
+
+-- 5.store wise sales
+select s.StoreKey,sd.Country,sum(Unit_Price_USD*s.Quantity) as total_sales_amount from PRODUCT_DETAILS pd
+join sales_details s on pd.ProductKey=s.ProductKey 
+join STORE_DETAILS sd on s.StoreKey=sd.StoreKey group by s.StoreKey,sd.Country;
+
+-- 6.overall selling amount
+select sum(Unit_Price_USD*sd.Quantity) as total_sales_amount from PRODUCT_DETAILS pd
+join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey ;
