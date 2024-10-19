@@ -95,4 +95,14 @@ join STORE_DETAILS s on sd.StoreKey=s.StoreKey group by s.Country ;
 select s.Country,count(DISTINCT s.StoreKey),sum(pd.Unit_price_USD*sd.Quantity) as total_sales from PRODUCT_DETAILS pd
 join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey 
 join STORE_DETAILS s on sd.StoreKey=s.StoreKey group by s.Country ;
+
+-- 12.year wise brand sales
+select year(Order_Date),pd.Brand,round(SUM(Unit_price_USD*sd.Quantity),2) as year_sales FROM SALES_DETAILS sd
+join PRODUCT_DETAILS pd on sd.ProductKey=pd.ProductKey group by year(Order_Date),pd.Brand;
+
+-- 13.overall sales with quatity
+select Brand,sum(Unit_Price_USD*sd.Quantity) as sp,sum(Unit_Cost_USD*sd.Quantity) as cp,
+(SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity)) / SUM(Unit_Cost_USD*sd.Quantity) * 100 as profit 
+from PRODUCT_DETAILS pd join SALES_DETAILS sd on sd.ProductKey=pd.ProductKey
+group by Brand;
  
