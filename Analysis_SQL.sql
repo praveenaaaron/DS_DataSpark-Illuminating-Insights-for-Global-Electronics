@@ -64,3 +64,35 @@ join STORE_DETAILS sd on s.StoreKey=sd.StoreKey group by s.StoreKey,sd.Country;
 -- 6.overall selling amount
 select sum(Unit_Price_USD*sd.Quantity) as total_sales_amount from PRODUCT_DETAILS pd
 join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey ;
+
+-- 7. brand count
+select Brand ,count(Brand) as brand_count from PRODUCT_DETAILS group by  Brand;
+
+-- 8.cp and sp diffenecnce and profit
+select Unit_price_USD,Unit_Cost_USD,round((Unit_price_USD-Unit_Cost_USD),2) as diff,
+round(((Unit_price_USD-Unit_Cost_USD)/Unit_Cost_USD)*100,2) as profit_percent
+from PRODUCT_DETAILS;
+
+-- 9. brand wise selling amount
+select Brand,round(sum(Unit_price_USD*sd.Quantity),2) as sales_amount
+from PRODUCT_DETAILS pd join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey group by Brand;
+
+-- 10.Subcategory wise selling amount
+select Subcategory,count(Subcategory) from PRODUCT_DETAILS group by Subcategory;
+
+
+select Subcategory ,round(sum(Unit_price_USD*sd.Quantity),2) as TOTAL_SALES_AMOUNT
+from PRODUCT_DETAILS pd join sales_details sd on pd.ProductKey=sd.ProductKey
+ group by Subcategory order by TOTAL_SALES_AMOUNT desc;
+ 
+ 
+ -- 11.country overall wise sales
+select s.Country,sum(pd.Unit_price_USD*sd.Quantity) as total_sales from PRODUCT_DETAILS pd
+join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey 
+join STORE_DETAILS s on sd.StoreKey=s.StoreKey group by s.Country ;
+
+
+select s.Country,count(DISTINCT s.StoreKey),sum(pd.Unit_price_USD*sd.Quantity) as total_sales from PRODUCT_DETAILS pd
+join SALES_DETAILS sd on pd.ProductKey=sd.ProductKey 
+join STORE_DETAILS s on sd.StoreKey=s.StoreKey group by s.Country ;
+ 
