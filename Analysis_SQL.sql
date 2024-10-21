@@ -146,4 +146,16 @@ OVER(order by YEAR(Order_Date), month(Order_Date))*100,2) as profit_percent
 from SALES_DETAILS sd join PRODUCT_DETAILS pd 
 on sd.ProductKey=pd.ProductKey GROUP BY 
     YEAR(Order_Date), month(Order_Date);
+    
+-- 20.year wise profit   
+select YEAR(Order_Date) as Year ,(SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity)) as sales, 
+LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date)) AS Previous_year_Sales,
+round(((SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))-
+LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date)))/LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date))*100,2) as profit_percent
+from SALES_DETAILS sd join PRODUCT_DETAILS pd 
+on sd.ProductKey=pd.ProductKey GROUP BY 
+    YEAR(Order_Date);
  
