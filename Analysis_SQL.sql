@@ -105,4 +105,45 @@ select Brand,sum(Unit_Price_USD*sd.Quantity) as sp,sum(Unit_Cost_USD*sd.Quantity
 (SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity)) / SUM(Unit_Cost_USD*sd.Quantity) * 100 as profit 
 from PRODUCT_DETAILS pd join SALES_DETAILS sd on sd.ProductKey=pd.ProductKey
 group by Brand;
+
+-- 14.month wise sales with quatity
+select month(Order_Date),sum(Unit_Price_USD*sd.Quantity) as sp_month from SALES_DETAILS
+ sd join PRODUCT_DETAILS pd on sd.ProductKey=pd.ProductKey
+group by month(Order_Date);
+
+-- 15.month and year wise sales with quatity
+select month(Order_Date),year(Order_Date),Brand,sum(Unit_Price_USD*sd.Quantity) as sp_month from SALES_DETAILS
+ sd join PRODUCT_DETAILS pd on sd.ProductKey=pd.ProductKey
+group by month(Order_Date),year(Order_Date),Brand;
+ 
+ --  16.year wise sales
+select year(Order_Date),sum(Unit_Price_USD*sd.Quantity) as sp_month from SALES_DETAILS
+ sd join PRODUCT_DETAILS pd on sd.ProductKey=pd.ProductKey
+group by year(Order_Date);
+
+-- 17.comparing current_month and previous_month
+select YEAR(Order_Date),month(Order_Date) ,round(sum(Unit_Price_USD*sd.Quantity),2) as sales, LAG(sum(Unit_Price_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date), month(Order_Date)) AS Previous_Month_Sales from SALES_DETAILS sd join PRODUCT_DETAILS pd 
+on sd.ProductKey=pd.ProductKey GROUP BY 
+    YEAR(Order_Date), month(Order_Date);
+    
+    
+-- 18.comparing current_year and previous_year sales
+select YEAR(Order_Date) as year ,round(sum(Unit_Price_USD*sd.Quantity),2) as sales, LAG(sum(Unit_Price_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date)) AS Previous_Year_Sales from SALES_DETAILS sd join PRODUCT_DETAILS pd 
+on sd.ProductKey=pd.ProductKey GROUP BY 
+    YEAR(Order_Date);
+ 
+ 
+ -- 19.month wise profit
+select YEAR(Order_Date) as year,month(Order_Date) as month,(SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity)) as sales, 
+LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date), month(Order_Date)) AS Previous_Month_Sales,
+round(((SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))-
+LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date), month(Order_Date)))/LAG(sum(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity))
+OVER(order by YEAR(Order_Date), month(Order_Date))*100,2) as profit_percent
+from SALES_DETAILS sd join PRODUCT_DETAILS pd 
+on sd.ProductKey=pd.ProductKey GROUP BY 
+    YEAR(Order_Date), month(Order_Date);
  
