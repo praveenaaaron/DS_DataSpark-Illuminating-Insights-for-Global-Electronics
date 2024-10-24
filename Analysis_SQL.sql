@@ -127,13 +127,7 @@ OVER(order by YEAR(Order_Date), month(Order_Date)) AS Previous_Month_Sales from 
 on sd.ProductKey=pd.ProductKey GROUP BY 
     YEAR(Order_Date), month(Order_Date);
     
-    
--- 18.comparing current_year and previous_year sales
-select YEAR(Order_Date) as year ,round(sum(Unit_Price_USD*sd.Quantity),2) as sales, LAG(sum(Unit_Price_USD*sd.Quantity))
-OVER(order by YEAR(Order_Date)) AS Previous_Year_Sales from SALES_DETAILS sd join PRODUCT_DETAILS pd 
-on sd.ProductKey=pd.ProductKey GROUP BY 
-    YEAR(Order_Date);
- 
+
  
  -- 19.month wise profit
 select YEAR(Order_Date) as year,month(Order_Date) as month,(SUM(Unit_Price_USD*sd.Quantity) - SUM(Unit_Cost_USD*sd.Quantity)) as sales, 
