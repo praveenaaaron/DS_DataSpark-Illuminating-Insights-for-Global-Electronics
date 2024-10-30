@@ -58,6 +58,8 @@ Completion of the project comprehensive Exploratory Data Analysis (EDA) report f
 <h1>PowerBI</h1>
 <img src="https://github.com/praveenaaaron/DS_DataSpark-Illuminating-Insights-for-Global-Electronics/blob/main/customer.png">
 <img src="https://github.com/praveenaaaron/DS_DataSpark-Illuminating-Insights-for-Global-Electronics/blob/main/sales.png">
+<h3>Report:</h3>
+<img src="https://github.com/praveenaaaron/DS_DataSpark-Illuminating-Insights-for-Global-Electronics/blob/main/DataSpark.pptx">
 
 
 
