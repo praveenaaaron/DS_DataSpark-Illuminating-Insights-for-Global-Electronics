@@ -47,8 +47,16 @@ Store Performance: Evaluate store performance based on sales, size (square meter
 Geographical Analysis: Analyze sales by store location to identify high-performing regions.
 
 ## Results: 
-Upon completion of the project, learners are expected to deliver a comprehensive Exploratory Data Analysis (EDA) report for Global Electronics, featuring clean and integrated datasets, in-depth insights into customer demographics, purchasing behaviors, product performance, store operations, and currency impact on sales. The report will include visually compelling visualizations and actionable recommendations tailored to enhance marketing strategies, optimize inventory management, improve sales forecasting, guide product development, and inform store expansion and operational decisions. This analysis will empower Global Electronics to increase customer satisfaction, maximize revenue, and drive overall business growth.
+Completion of the project comprehensive Exploratory Data Analysis (EDA) report for Global Electronics, featuring clean and integrated datasets, in-depth insights into customer demographics, purchasing behaviors, product performance, store operations, and currency impact on sales. The report will include visually compelling visualizations and actionable recommendations tailored to enhance marketing strategies, optimize inventory management, improve sales forecasting, guide product development, and inform store expansion and operational decisions. This analysis will empower Global Electronics to increase customer satisfaction, maximize revenue, and drive overall business growth.
 
-
+<h3>Sample Screen:</h3>
+<h1>Pyhton Code</h1>
+<img src="https://github.com/praveenaaaron/Data-Scraping-with-Selenium-Dynamic-Filtering-using-Streamlit-main/blob/main/csv_files/home1.png">
+<h1>MySql</h1>
+<img src="https://github.com/praveenaaaron/Data-Scraping-with-Selenium-Dynamic-Filtering-using-Streamlit-main/blob/main/csv_files/page1.png">
+<img src="https://github.com/praveenaaaron/Data-Scraping-with-Selenium-Dynamic-Filtering-using-Streamlit-main/blob/main/csv_files/page2.png">
+<h1>PowerBI</h1>
+<img src="https://github.com/praveenaaaron/Data-Scraping-with-Selenium-Dynamic-Filtering-using-Streamlit-main/blob/main/csv_files/page2.png">
+<img src="https://github.com/praveenaaaron/Data-Scraping-with-Selenium-Dynamic-Filtering-using-Streamlit-main/blob/main/csv_files/page2.png">
 
 
