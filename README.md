@@ -60,7 +60,8 @@ Completion of the project comprehensive Exploratory Data Analysis (EDA) report f
 <img src="https://github.com/praveenaaaron/DS_DataSpark-Illuminating-Insights-for-Global-Electronics/blob/main/sales.png">
 <h3>Report:</h3>
 <img src="https://github.com/praveenaaaron/DS_DataSpark-Illuminating-Insights-for-Global-Electronics/blob/main/DataSpark.pptx">
-
+<h3>Developed by:</h3>
+<h1>B.N.Piraviena</h1>
 
 
 
