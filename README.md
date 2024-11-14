@@ -22,7 +22,7 @@ Merge datasets where necessary for analysis (e.g., linking sales data with produ
 ## Load Data
 Insert the preprocessed data into an SQL database by creating relevant tables for each data source and using SQL INSERT statements to load the data.
 ## Power BI Visualization
-Connect SQL to Power BI/Tableau, import the data, and create interactive dashboards.
+Connect SQL to Power BI import the data, and create interactive dashboards.
 ## Develop  SQL Queries
 Formulate and execute SQL queries to extract key insights from the data. These queries should address important business questions and support the analysis steps below.
 
